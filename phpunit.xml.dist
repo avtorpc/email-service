@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         executionOrder="depends,defects"
+         requireCoverageMetadata="false"
+         beStrictAboutCoverageMetadata="false"
+         beStrictAboutOutputDuringTests="true"
+         failOnRisky="true"
+         failOnWarning="true"
+>
+    <php>
+        <env name="KERNEL_CLASS" value="App\Kernel" />
+        <env name="SERVER_MODE" value="test" />
+        <env name="DEFAULT_URI" value="http://localhost:8080" />
+        <env name="MAILER_DSN" value="smtp://login:password@smtp.yandex.ru:465?encryption=ssl" />
+        <env name="MAIL_FROM_ADDRESS" value="noreply@onmi.pro" />
+        <env name="MAIL_FROM_NAME" value="ONMI" />
+        <env name="REDIS_URL" value="redis://localhost:6379" />
+        <env name="APP_ENV" value="test" />
+        <env name="APP_DEBUG" value="true" />
+        <env name="APP_SECRET" value="test" />
+        <env name="DATABASE_URL" value="sqlite:///:memory:" />
+    </php>
+
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+        <exclude>
+            <directory>src/Command</directory>
+        </exclude>
+    </source>
+</phpunit>
