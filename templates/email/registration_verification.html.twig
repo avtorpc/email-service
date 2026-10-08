@@ -3,48 +3,35 @@
 {% block body %}
     <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
         <tr>
-            <td style="padding:0 0 20px 0; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#232323; font-weight:normal;">
+            <td style="padding:0 0 12px; font-family:Arial, Helvetica, sans-serif; font-size:24px; line-height:32px; font-weight:bold; color:#262827;">
                 Здравствуйте!
             </td>
         </tr>
         <tr>
-            <td style="padding:0 0 20px 0; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#232323; font-weight:normal;">
+            <td style="padding:0 0 24px; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#626560;">
                 Ваш код подтверждения:
             </td>
         </tr>
-    </table>
-
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
         <tr>
-            <td style="padding:0 0 20px 0;">
-                <!--[if mso]>
-            <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:40px; v-text-anchor:middle; width:auto;" arcsize="30%" stroke="f" fillcolor="#d40020">
-                <w:anchorlock/>
-                <center style="color:#ffffff; font-family:Arial, sans-serif; font-size:14px; font-weight:normal;">{{ verification_code }}</center>
-            </v:roundrect>
-            <![endif]-->
-                <!--[if !mso]><!-->
-                <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; background-color:#d40020; border-radius:12px;">
+            <td style="padding:0 0 24px;">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%; border-collapse:separate; border-spacing:0;">
                     <tr>
-                        <td style="padding:10px 14px; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:20px; color:#ffffff; font-weight:normal; text-align:center; white-space:nowrap;">
-                            {{ verification_code }}
-                        </td>
+                        <td align="center" bgcolor="#eeeeeb" style="padding:24px 12px; background-color:#eeeeeb; border:1px solid #e2e3df; border-radius:10px; font-family:'Courier New', Courier, monospace; font-size:36px; line-height:44px; letter-spacing:6px; font-weight:bold; color:#262827; white-space:nowrap;">{{ verification_code }}</td>
                     </tr>
                 </table>
-                <!--<![endif]-->
-            </td>
-        </tr>
-    </table>
-
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
-        <tr>
-            <td style="padding:0 0 20px 0; font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#232323; font-weight:normal;">
-                Код может быть использован единожды. Код действителен до {{ expires_at|date("H:i:s", "Europe/Moscow") }} (Москва). Повторная отправка аннулирует предыдущий код.
             </td>
         </tr>
         <tr>
-            <td style="font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:24px; color:#232323; font-weight:normal;">
-                Никому не сообщайте этот код. Сотрудники Место не запрашивают коды по телефону, в мессенджерах или вне платформы.
+            <td style="padding:0 0 24px; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:22px; color:#626560;">
+                Код может быть использован единожды.
+                {% block validity %}Код действителен до <strong style="font-weight:bold; color:#262827;">{{ expires_at|date('H:i:s', 'Europe/Moscow') }}</strong> (Москва).{% endblock %}
+                Повторная отправка аннулирует предыдущий код.
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:20px 0 0; border-top:1px solid #e2e3df; font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:21px; color:#858783;">
+                <strong style="font-weight:bold; color:#626560;">Никому не сообщайте этот код.</strong><br>
+                Сотрудники Место не запрашивают коды по телефону, в мессенджерах или вне платформы.
             </td>
         </tr>
     </table>
