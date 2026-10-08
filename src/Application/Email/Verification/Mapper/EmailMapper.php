@@ -87,7 +87,7 @@ final class EmailMapper
              */
             template: $request->template,
 
-            subject: 'Email verification code',
+            subject: 'Место — код подтверждения email',
 
             /**
              * =====================================================
@@ -96,6 +96,7 @@ final class EmailMapper
              */
             templateData: [
                 'locale' => $request->locale,
+                'expires_at' => $request->payload['expires_at'] ?? $expiresAt->format(DATE_ATOM),
 
                 'verification_code' => $request->verificationCode,
 

@@ -87,7 +87,7 @@ final class EmailProcessEventCommand extends Command
             return Command::FAILURE;
         }
 
-        if ($row['status'] === 'sent') {
+        if ($row['status'] === 'sent' || $row['status'] === 'failed') {
             $this->log($output, sprintf(
                 'skip_already_sent event_id=%s attempt_count=%d',
                 $eventId,
@@ -132,6 +132,10 @@ final class EmailProcessEventCommand extends Command
                     $command->template
                 ));
 
+                if (isset($command->templateData['expires_at']) && strtotime($command->templateData['expires_at']) <= time()) {
+                    $this->eventService->markFailed($eventId, 'Verification code expired');
+                    return Command::FAILURE;
+                }
                 $this->eventService->markProcessing($eventId);
                 $this->log($output, sprintf(
                     'status_processing attempt=%d/%d event_id=%s',

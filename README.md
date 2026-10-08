@@ -1,3 +1,7 @@
+## Регистрация Место — 2026-10-07
+
+Актуальный сценарий email-регистрации, границы сервисов, настройки и проверки: [registration-mvp.md](../../docs/flows/registration-mvp.md). Прежние описания SMS-регистрации ниже относятся к старому проекту.
+
 # ONMI Email Service
 
 `email-service` принимает события отправки писем по HTTP от Java `event-worker-service`.
