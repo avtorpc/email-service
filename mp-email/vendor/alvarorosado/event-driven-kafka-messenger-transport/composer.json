@@ -1,0 +1,56 @@
+{
+  "name": "alvarorosado/event-driven-kafka-messenger-transport",
+  "description": "A Symfony bundle for integrating Kafka with Messenger, following a event driven approach",
+  "type": "symfony-bundle",
+  "keywords": ["kafka", "multi-topic", "event-driven", "rdkafka", "librdkafka", "symfony", "messenger", "transport", "queue", "bundle"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alvaro Rosado",
+      "email": "alvaro.rosado93@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "ext-json": "*",
+    "ext-pcntl": "*",
+    "ext-rdkafka": "*",
+    "phpdocumentor/reflection-docblock": "^5.0",
+    "symfony/config": "^5.0||^6.0||7.*",
+    "symfony/dependency-injection": "^5.0||^6.0||7.*",
+    "symfony/http-client": "^5.0||^6.0||7.*",
+    "symfony/http-kernel": "^5.0||^6.0||7.*",
+    "symfony/messenger": "^5.0||^6.0||7.*",
+    "symfony/property-access": "^5.0||^6.0||7.*",
+    "symfony/property-info": "^5.0||^6.0||7.*",
+    "symfony/serializer": "^5.0||^6.0||7.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "ARO\\KafkaMessenger\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ARO\\KafkaMessenger\\Tests\\": "tests/"
+    }
+  },
+  "suggest": {
+    "ext-rdkafka": "^6.0; Needed to support Kafka connectivity"
+  },
+  "config": {
+    "sort-packages": true,
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "stable",
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.x-dev"
+    }
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.75",
+    "kwn/php-rdkafka-stubs": "^2.2",
+    "phpunit/phpunit": "^12.0"
+  }
+}

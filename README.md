@@ -114,3 +114,9 @@ docker exec email_service_php php bin/console app:email:process-event 439e835e-c
 - `src/Command/EmailProcessEventCommand.php` — попытки отправки и логирование.
 - `src/Infrastructure/Email/Sender/SymfonyMailerEmailSender.php` — рендеринг
   шаблона и передача письма в Symfony Mailer.
+
+## Зависимости без сетевой установки
+
+Полная папка vendor хранится в Git, включая автозагрузчик и лицензии. При запуске контейнера `php bin/check-vendor.php` локально проверяет пакеты по composer.lock и автозагрузку Symfony/Doctrine. Composer и Packagist при запуске не вызываются; неполный или несогласованный vendor останавливает запуск с сообщением об ошибке.
+
+Обновляйте зависимости на машине с доступом к репозиториям через `composer install --no-interaction --prefer-dist --no-scripts`, затем проверяйте `php bin/check-vendor.php`. Сохраняйте весь vendor вместе с composer.json и composer.lock. Для целевого изменения версий используйте composer update. Файлы .env, var и секреты остаются исключены из Git.
